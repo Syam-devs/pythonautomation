@@ -4,13 +4,16 @@
 
 import csv
 import asyncio
+import os
 from telethon import TelegramClient
 from telethon.tl.types import UserStatusRecently, UserStatusOnline, UserStatusLastWeek, UserStatusOffline
 
 # ===== CONFIG =====
-api_id = 28096799           # Replace with your API ID
-api_hash = '0f781ad82b42b382ff9446cdbac9f5bf'  # Replace with your API HASH
-session_name = 'session_collect'   # Session filename
+# ===== CONFIG =====
+api_id = int(os.getenv('API_ID'))   # Load from Railway Variables
+api_hash = os.getenv('API_HASH')    # Load from Railway Variables
+session_name = 'session_collect'
+
 source_groups = [
     'infosys_cognizant_accenture_exam',           # group username (not full link)
     'cognizant_tata_elxsi_exam_group',
@@ -80,3 +83,4 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+
